@@ -36,7 +36,7 @@ namespace DuplicateFileDetect
                         Console.WriteLine("Files With Duplcate Contents");
                         foreach (Pair matchFiles in ListDuplicateFiles(folderPath))
                         {
-                            Console.WriteLine("{0} == {1}",matchFiles.FileOne, matchFiles.FileTwo);
+                            Console.WriteLine("{0} == {1}", matchFiles.FileTwo, matchFiles.FileOne);
                         }
                     }
                     else
@@ -108,7 +108,7 @@ namespace DuplicateFileDetect
         private static string GetFileHash(string fileName, long bytesToHash)
         {
             FileInfo fileInfo = new FileInfo(fileName);
-            if(fileInfo.Length < bytesToHash)
+            if(fileInfo.Length < bytesToHash || bytesToHash == 0)
             {
                 bytesToHash = fileInfo.Length;
             }
